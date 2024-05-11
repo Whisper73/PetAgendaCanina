@@ -1,5 +1,5 @@
-<h1 align="center"> PetAgenda </h1>
-<p align="center">
+<h1> Pet-Agenda </h1>
+<p>
 <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
 </p>
 <br>
