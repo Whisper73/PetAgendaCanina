@@ -1,5 +1,7 @@
-using Abstractions.Repositories;
-using Abstractions.Repositories.Implementations;
+
+using Microsoft.Extensions.DependencyInjection;
+using PetAgenda.Abstractions.Repositories;
+using PetAgenda.Abstractions.Repositories.Implementations;
 using PetAgenda.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +19,11 @@ DataBaseConnection mySqlDataBase = new(builder.Configuration.GetConnectionString
 
 builder.Services.AddSingleton(mySqlDataBase);
 
-builder.Services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
+IRepository repo = new Repository(mySqlDataBase);
+
+builder.Services.AddSingleton(repo);
+
+//builder.Services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
 
 var app = builder.Build();
 

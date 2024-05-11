@@ -1,6 +1,6 @@
-﻿using Abstractions.Repositories;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Models;
+using PetAgenda.Abstractions.Repositories;
 
 namespace PetAgenda.Controllers {
 
@@ -8,16 +8,16 @@ namespace PetAgenda.Controllers {
     [ApiController]
     public class EmpleadosController : ControllerBase {
 
-        private readonly IEmpleadoRepository _empleadoRepo;
+        private readonly IRepository _Repo;
 
-        public EmpleadosController(IEmpleadoRepository empleadoRepo) {
-            _empleadoRepo = empleadoRepo;
+        public EmpleadosController(IRepository Repo) {
+            _Repo = Repo;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Empleado>?>> GetAll() {
 
-            IEnumerable<Empleado>? empleados = await _empleadoRepo.GetAll();
+            IEnumerable<Empleado>? empleados = await _Repo.Empleados.GetAll();
 
             if (empleados == null) {
                 return NotFound();
@@ -30,7 +30,7 @@ namespace PetAgenda.Controllers {
         [HttpGet("{id}")]
         public async Task<ActionResult<Empleado>> GetById(int id) {
 
-            Empleado? empleado = await _empleadoRepo.GetById(id);
+            Empleado? empleado = await _Repo.Empleados.GetById(id);
 
             if (empleado == null) {
                 return NotFound();
@@ -50,7 +50,7 @@ namespace PetAgenda.Controllers {
                 return BadRequest(ModelState);
             }
 
-            bool wasCreated = await _empleadoRepo.Insert(empleado);
+            bool wasCreated = await _Repo.Empleados.Insert(empleado);
 
             return Created("Creado", wasCreated);
 
@@ -67,7 +67,7 @@ namespace PetAgenda.Controllers {
                 return BadRequest(ModelState);
             }
 
-            var newEmpleado = await _empleadoRepo.Update(empleado);
+            var newEmpleado = await _Repo.Empleados.Update(empleado);
 
             return Created("Creado", newEmpleado);
 
@@ -76,13 +76,13 @@ namespace PetAgenda.Controllers {
         [HttpDelete]
         public async Task<IActionResult> Delete(int id) {
 
-            bool wasDeleted = await _empleadoRepo.Delete(id);
+            bool wasDeleted = await _Repo.Empleados.Delete(id);
 
             if (!wasDeleted) {
                 return NotFound();
             }
 
-            return NoContent();
+            return Ok($"Empleado {id} was Deleted");
 
         }
 
