@@ -91,16 +91,12 @@ namespace Abstractions.Repositories.Implementations {
         public EmpleadoRepository(DataBaseConnection dbConnection) {
             _dbConnection = dbConnection;
         }
-
-        protected MySqlConnection SqlConnection() {
-            return new MySqlConnection(_dbConnection.ConnectionString);
-        }
-      
+    
         public async Task<IEnumerable<Empleado>?> GetAll() {
 
             IEnumerable<Empleado>? response = null;
 
-            await using (MySqlConnection con = SqlConnection()) {
+            await using (MySqlConnection con = _dbConnection.CreateConnection()) {
 
                 await con.OpenAsync();
 
@@ -123,7 +119,7 @@ namespace Abstractions.Repositories.Implementations {
 
             Empleado? response = null;
 
-            await using (MySqlConnection con = SqlConnection()) {
+            await using (MySqlConnection con = _dbConnection.CreateConnection()) {
 
                 await con.OpenAsync();
 
@@ -148,15 +144,18 @@ namespace Abstractions.Repositories.Implementations {
                 throw new ArgumentNullException(nameof(empleado));
             }
 
+            int personaId;
+
             empleado.FechaRegistro = DateTime.Now.ToString("yyyy-MM-dd");
 
             try {
-                await using (MySqlConnection con = SqlConnection()) {
+                await using (MySqlConnection con = _dbConnection.CreateConnection()) {
                     await con.OpenAsync();
 
                     using (MySqlTransaction transaction = con.BeginTransaction()) {
+
                         try {
-                            int personaId = await con.QuerySingleAsync<int>(QueryInsertPersona,
+                            personaId = await con.ExecuteScalarAsync<int>(QueryInsertPersona,
                                 new {
                                     empleado.Documento,
                                     empleado.Nombre,
@@ -181,8 +180,11 @@ namespace Abstractions.Repositories.Implementations {
                             transaction.Rollback();
                             return false;
                         }
+
                     }
+
                 }
+
             }
             catch (Exception ex) {
                 // Manejar la excepción o lanzarla nuevamente si es necesario
@@ -201,7 +203,7 @@ namespace Abstractions.Repositories.Implementations {
 
             empleado.FechaRegistro = DateTime.Now.ToString("yyyy-MM-dd");
 
-            await using (MySqlConnection con = SqlConnection()) {
+            await using (MySqlConnection con = _dbConnection.CreateConnection()) {
 
                 await con.OpenAsync();
 
@@ -245,7 +247,7 @@ namespace Abstractions.Repositories.Implementations {
 
             string FechaBorrado = DateTime.Now.ToString("yyyy-MM-dd");
 
-            await using (MySqlConnection con = SqlConnection()) {
+            await using (MySqlConnection con = _dbConnection.CreateConnection()) {
 
                 await con.OpenAsync();
 
