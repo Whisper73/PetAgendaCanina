@@ -1,5 +1,4 @@
 ﻿using Abstractions.Repositories;
-using Abstractions.Repositories.Implementations;
 using PetAgenda.Models;
 
 namespace PetAgenda.Abstractions.Repositories.Implementations {
@@ -7,7 +6,7 @@ namespace PetAgenda.Abstractions.Repositories.Implementations {
 
         public IEmpleadoRepository Empleados { get; }
 
-        //public IClienteRepository Clientes { get; }
+        public IClienteRepository Clientes { get; }
 
         public Repository(DataBaseConnection dbConnection) {
 
@@ -16,8 +15,10 @@ namespace PetAgenda.Abstractions.Repositories.Implementations {
             }
 
             Empleados = new EmpleadoRepository(dbConnection);
-            //Clientes = new CienteRepository(dbConnection);
+            Clientes = new ClienteRepository(dbConnection);
 
         }
+
     }
+
 }

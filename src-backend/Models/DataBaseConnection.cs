@@ -1,6 +1,4 @@
-﻿
-
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
 namespace PetAgenda.Models {
     public class DataBaseConnection {

@@ -6,7 +6,7 @@ namespace PetAgenda.Controllers {
 
     [Route("Empleados")]
     [ApiController]
-    public class EmpleadosController : ControllerBase {
+    public sealed class EmpleadosController : ControllerBase {
 
         private readonly IRepository _Repo;
 

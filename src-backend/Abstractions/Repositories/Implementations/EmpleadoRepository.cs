@@ -3,7 +3,7 @@ using Models;
 using MySql.Data.MySqlClient;
 using PetAgenda.Models;
 
-namespace Abstractions.Repositories.Implementations {
+namespace Abstractions.Repositories {
 
     public class EmpleadoRepository : IEmpleadoRepository {
 
@@ -135,7 +135,8 @@ namespace Abstractions.Repositories.Implementations {
 
             }
 
-              return response;        
+            return response;  
+            
         }
 
         public async Task<bool> Insert(Empleado empleado) {
@@ -150,6 +151,7 @@ namespace Abstractions.Repositories.Implementations {
 
             try {
                 await using (MySqlConnection con = _dbConnection.CreateConnection()) {
+
                     await con.OpenAsync();
 
                     using (MySqlTransaction transaction = con.BeginTransaction()) {
@@ -180,6 +182,9 @@ namespace Abstractions.Repositories.Implementations {
                             transaction.Rollback();
                             return false;
                         }
+                        finally {
+                            await con.CloseAsync();
+                        }
 
                     }
 
@@ -187,7 +192,6 @@ namespace Abstractions.Repositories.Implementations {
 
             }
             catch (Exception ex) {
-                // Manejar la excepción o lanzarla nuevamente si es necesario
                 throw new Exception("Error al insertar datos", ex);
             }
 
@@ -200,8 +204,6 @@ namespace Abstractions.Repositories.Implementations {
             if (empleado == null) {
                 throw new ArgumentNullException(nameof(empleado));
             }
-
-            empleado.FechaRegistro = DateTime.Now.ToString("yyyy-MM-dd");
 
             await using (MySqlConnection con = _dbConnection.CreateConnection()) {
 
@@ -239,6 +241,7 @@ namespace Abstractions.Repositories.Implementations {
             }
 
             return true;
+
         }
 
         public async Task<bool> Delete(int id) {
