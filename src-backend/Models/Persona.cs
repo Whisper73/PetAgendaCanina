@@ -1,5 +1,4 @@
-﻿
-namespace Models {
+﻿namespace Models {
     public class Persona {
 
         public int? Id { get; set; }

@@ -1,5 +1,4 @@
-﻿
-using Models;
+﻿using Models;
 
 namespace Abstractions.Repositories {
     public interface IPersonaRepository {
