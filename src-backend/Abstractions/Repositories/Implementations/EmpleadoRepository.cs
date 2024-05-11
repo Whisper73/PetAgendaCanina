@@ -21,9 +21,7 @@ namespace Abstractions.Repositories {
                 p.Num_Telefono,
                 p.Correo,
                 p.Direccion,
-                p.FechaRegistro,
-                p.EstaBorrado,
-                p.FechaBorrado
+                p.FechaRegistro
             FROM 
                 Empleado e
             INNER JOIN 
@@ -45,9 +43,7 @@ namespace Abstractions.Repositories {
                 p.Num_Telefono,
                 p.Correo,
                 p.Direccion,
-                p.FechaRegistro,
-                p.EstaBorrado,
-                p.FechaBorrado
+                p.FechaRegistro
             FROM 
                 Empleado e
             INNER JOIN 

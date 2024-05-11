@@ -15,11 +15,11 @@ builder.Services.AddSwaggerGen();
 // Add DataBase and Repository Services
 DataBaseConnection mySqlDataBase = new(builder.Configuration.GetConnectionString("MySQLConnection"));
 
-builder.Services.AddSingleton(mySqlDataBase);
-
 IRepository repo = new Repository(mySqlDataBase);
 
 builder.Services.AddSingleton(repo);
+
+//builder.Services.AddSingleton(mySqlDataBase);
 
 //builder.Services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
 
