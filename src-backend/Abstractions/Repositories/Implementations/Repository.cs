@@ -10,6 +10,9 @@ namespace PetAgenda.Abstractions.Repositories.Implementations
         public IClienteRepository Clientes { get; }
 
         public ICitaRepository Citas { get; }
+        public IMascotaRepository Mascotas { get; }
+
+        public IServicioRepository Servicios { get; }
 
         public Repository(DataBaseConnection dbConnection)
         {
@@ -20,6 +23,8 @@ namespace PetAgenda.Abstractions.Repositories.Implementations
             Empleados = new EmpleadoRepository(dbConnection);
             Clientes = new ClienteRepository(dbConnection);
             Citas = new CitaRepository(dbConnection);
+            Mascotas = new MascotaRepository(dbConnection);
+            Servicios = new ServicioRepository(dbConnection);
         }
     }
 }
