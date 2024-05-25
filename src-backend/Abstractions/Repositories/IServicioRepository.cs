@@ -13,5 +13,7 @@ namespace Abstractions.Repositories
         Task<bool> Update(Servicio servicio);
 
         Task<bool> Delete(int id);
+
     }
+
 }

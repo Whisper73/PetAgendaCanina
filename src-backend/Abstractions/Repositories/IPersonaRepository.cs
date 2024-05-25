@@ -14,4 +14,5 @@ namespace Abstractions.Repositories {
         Task<bool> Delete(int id);
 
     }
+
 }

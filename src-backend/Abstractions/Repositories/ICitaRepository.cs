@@ -13,5 +13,7 @@ namespace Abstractions.Repositories
         Task<bool> Update(Cita cita);
 
         Task<bool> Delete(int id);
+
     }
+
 }

@@ -5,8 +5,8 @@ using PetAgenda.Models;
 
 namespace Abstractions.Repositories
 {
-    public class ServicioRepository : IServicioRepository
-    {
+    public class ServicioRepository : IServicioRepository {
+
         private readonly string QueryGetServicioById = @"
             SELECT *
             FROM Servicio
@@ -37,21 +37,17 @@ namespace Abstractions.Repositories
 
         private readonly DataBaseConnection _dbConnection;
 
-        public ServicioRepository(DataBaseConnection dbConnection)
-        {
+        public ServicioRepository(DataBaseConnection dbConnection) {
             _dbConnection = dbConnection;
         }
 
-        public async Task<IEnumerable<Servicio>?> GetAll()
-        {
+        public async Task<IEnumerable<Servicio>?> GetAll() {
             IEnumerable<Servicio>? response = null;
 
-            await using (MySqlConnection con = _dbConnection.CreateConnection())
-            {
+            await using (MySqlConnection con = _dbConnection.CreateConnection()) {
                 await con.OpenAsync();
 
-                try
-                {
+                try {
                     response = await con.QueryAsync<Servicio>(QueryGetAllServicios, new { });
                 }
                 catch (Exception)
