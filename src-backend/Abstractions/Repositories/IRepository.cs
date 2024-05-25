@@ -8,7 +8,9 @@ namespace PetAgenda.Abstractions.Repositories {
         public IClienteRepository Clientes { get; }
 
         public ICitaRepository Citas { get; }
+
         public IMascotaRepository Mascotas { get; }
+
         public IServicioRepository Servicios { get; }
     }
 }
