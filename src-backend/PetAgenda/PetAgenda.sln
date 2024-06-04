@@ -5,9 +5,11 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAgenda", "PetAgenda.csproj", "{DAA89829-78D4-4708-86CC-D5A8DAA3388E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAgenda.Models", "..\Models\PetAgenda.Models.csproj", "{D36D04CC-4813-4C5A-B709-D36F8660D514}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAgenda.Models", "..\Models\PetAgenda.Models.csproj", "{D36D04CC-4813-4C5A-B709-D36F8660D514}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAgenda.Abstractions", "..\Abstractions\PetAgenda.Abstractions.csproj", "{799C17AA-999C-400F-83C3-9635E251FE58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PetAgenda.Abstractions", "..\Abstractions\PetAgenda.Abstractions.csproj", "{799C17AA-999C-400F-83C3-9635E251FE58}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrontEnd", "..\..\src-frontend\FrontEnd.csproj", "{876BAFEE-948F-4F21-A68B-5A4B2DC3E966}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{799C17AA-999C-400F-83C3-9635E251FE58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{799C17AA-999C-400F-83C3-9635E251FE58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{799C17AA-999C-400F-83C3-9635E251FE58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{876BAFEE-948F-4F21-A68B-5A4B2DC3E966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{876BAFEE-948F-4F21-A68B-5A4B2DC3E966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{876BAFEE-948F-4F21-A68B-5A4B2DC3E966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{876BAFEE-948F-4F21-A68B-5A4B2DC3E966}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
