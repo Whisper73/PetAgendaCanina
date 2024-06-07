@@ -4,6 +4,18 @@ using PetAgenda.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options => {
+        options.AddPolicy("MyPolicy",
+            builder => {
+                builder.WithOrigins("http://localhost:53462")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+            }
+
+        );
+
+});
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -19,18 +31,21 @@ IRepository repo = new Repository(mySqlDataBase);
 
 builder.Services.AddSingleton(repo);
 
-//builder.Services.AddSingleton(mySqlDataBase);
-
-//builder.Services.AddScoped<IEmpleadoRepository, EmpleadoRepository>();
-
 var app = builder.Build();
 
+app.UseHttpsRedirection();
+
+app.UseStaticFiles();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseRouting();
+
+app.UseCors("MyPolicy");
 
 app.UseAuthorization();
 
