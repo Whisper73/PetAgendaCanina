@@ -1,4 +1,5 @@
 
+//Defino la variable oTabla como pública
 var oTabla = $("#tblClientes").DataTable();
 var oTablaTel = $("#tblTelefonos").DataTable();
 jQuery(function () {
@@ -6,14 +7,14 @@ jQuery(function () {
     $("#btnTelefonos").on("click", function () {
         LlenarInformacionTelefonos();
     });
-    $("#bntInsertar").on("click", function () {
+    $("#btnInsertar").on("click", function () {
         EjecutarComandos("POST");
     });
-    $("#btnActualizarTel").on("click", function () {
-        EjecutarComandos("PUT");
-    });
-    $("#btnEliminarTel").on("click", function () {
+    $("#btnEliminar").on("click", function () {
         EjecutarComandos("DELETE");
+    });
+    $("#btnActualizar").on("click", function () {
+        EjecutarComandos("PUT");
     });
     $("#btnCerrarModal").on("click", function () {
         LlenarTablaClientes();
@@ -41,8 +42,10 @@ jQuery(function () {
     LlenarTablaClientes();
     /*LlenarCombotTipoTelefono();*/
 });
-function LlenarTablaClientes() {
 
+
+function LlenarTablaClientes() {
+    
     LlenarTablasXServicio("http://localhost:17036/Clientes", "#tblClientes");
 }
 //function LlenarCombotTipoTelefono() {
@@ -73,7 +76,10 @@ function EditarFila(DatosFila) {
 //    $("#txtNombreCliente").val(Nombre + " " + PrimerApellido + " " + SegundoApellido);
 //    LlenarTablasXServicio("http://localhost:53634/api/Telefono?Documento=" + Documento, "#tblTelefonos");
 //}
+
+
 async function EjecutarComandos(Comando) {
+
     event.preventDefault();
 
     let Documento = $("#txtDocumento").val();
@@ -83,22 +89,35 @@ async function EjecutarComandos(Comando) {
     let Correo = $("#txtEmail").val();
     let Direccion = $("#txtDireccion").val();
     let Nivel = $("#txtNivel").val();
+    let idPersona = $("#txtIdPersona").val();
+    let idCliente = $("#txtIdCliente").val();
 
-    debugger;
+    let Cliente = null;
+    let Uri = "";
+    if (Comando== "POST" || Comando == "PUT") {
 
-    let Cliente = {
-        Documento: Documento,
-        Nombre: Nombre,
-        Apellido: Apellido,
-        Num_Telefono: Num_Telefono,
-        Correo: Correo,
-        Direccion: Direccion,
-        Nivel: Nivel
-    }
+        Cliente = {
+            Documento: Documento,
+            Nombre: Nombre,
+            Apellido: Apellido,
+            Num_Telefono: Num_Telefono,
+            Correo: Correo,
+            Direccion: Direccion,
+            Nivel: Nivel,
+            Id_Persona: idPersona,
+            IdCliente: idCliente
+        }
+
+        Uri = "http://localhost:17036/Clientes";
+
+    } else if (Comando == "DELETE") {
+
+        Uri = "http://localhost:17036/Clientes?id="+idPersona;
+    }  
 
     //Invocamos el servicio a través del fetch, usando el método fetch de javascript
     try {
-        const Respuesta = await fetch("http://localhost:17036/Clientes",
+        const Respuesta = await fetch(Uri,
             {
                 method: Comando,
                 mode: "cors",
@@ -110,14 +129,13 @@ async function EjecutarComandos(Comando) {
         const Rpta = await Respuesta.json();
         //Se presenta la respuesta en el div mensaje
         $("#dvMensaje").html(Rpta);
-        LlenarInformacionTelefonos();
+ 
     }
     catch (error) {
         //Se presenta la respuesta en el div mensaje
         $("#dvMensaje").html(error);
     }
 }
-
 async function LlenarTablasXServicio(urlServicio, TablaLlenar) {
     //Invocar el servicio que trae la lista con la información para llenar la tabla
     try {
