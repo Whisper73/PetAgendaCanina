@@ -12,5 +12,7 @@ namespace PetAgenda.Abstractions.Repositories {
         public IMascotaRepository Mascotas { get; }
 
         public IServicioRepository Servicios { get; }
+
+        public IFacturaRepository Facturas { get; }
     }
 }
