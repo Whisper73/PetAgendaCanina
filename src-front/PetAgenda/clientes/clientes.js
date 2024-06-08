@@ -94,7 +94,25 @@ async function EjecutarComandos(Comando) {
 
     let Cliente = null;
     let Uri = "";
-    if (Comando== "POST" || Comando == "PUT") {
+    if (Comando== "POST") {
+
+        Cliente = {
+            Documento: Documento,
+            Nombre: Nombre,
+            Apellido: Apellido,
+            Num_Telefono: Num_Telefono,
+            Correo: Correo,
+            Direccion: Direccion,
+            Nivel: Nivel
+        }
+
+        Uri = "http://localhost:17036/Clientes";
+
+    } else if (Comando == "DELETE") {
+
+        Uri = "http://localhost:17036/Clientes?id="+idPersona;
+
+    } else if (Comando == "PUT"){
 
         Cliente = {
             Documento: Documento,
@@ -110,10 +128,8 @@ async function EjecutarComandos(Comando) {
 
         Uri = "http://localhost:17036/Clientes";
 
-    } else if (Comando == "DELETE") {
 
-        Uri = "http://localhost:17036/Clientes?id="+idPersona;
-    }  
+    }
 
     //Invocamos el servicio a través del fetch, usando el método fetch de javascript
     try {
