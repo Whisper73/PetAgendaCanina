@@ -1,0 +1,194 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PET AGENDA</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.7.0/dt-2.0.8/datatables.min.css" rel="stylesheet">
+    <link href="../menu/stylesmenu.css" rel="stylesheet">
+</head>
+<body>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="fixed-top">
+                <nav class="navbar navbar-dark bg-dark">
+                    <h1 class="text-white h4">Pet Agenda System </h1>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </nav>
+                <div class="collapse collapse-nav" id="navbarToggleExternalContent">
+                  <div class="bg-dark text-center container-nav p-4 text-white">
+                    
+                    <span class=" bi bi-person-lock" aria-hidden="true"></span> Nombre de usuario
+            
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href=""><span class="bi bi-house-door-fill" aria-hidden="true"></span> Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""><span class="bi bi-person-hearts" aria-hidden="true"></span>
+                                Propietarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""><span class="bi bi-plus-square-fill" aria-hidden="true"></span> mascotas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""><span class="bi bi-calendar-fill" aria-hidden="true"></span> Citas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""><span class="bi bi-list-nested" aria-hidden="true"></span> Servicios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""><span class="bi bi-cash" aria-hidden="true"></span> Facturación</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""><span class="bi bi-star-fill" aria-hidden="true"></span> Fidelización</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""><span class="bi bi-person-lock" aria-hidden="true"></span> Usuarios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href=""><span class="bi bi-file-earmark-fill" aria-hidden="true"></span> Informes</a>
+                        </li>
+                      </ul>
+                  </div>
+                </div>               
+              </div>
+            </div>
+            <!-- left column -->
+            <div class="col-md-12 pt-5 mt-3">
+                <!-- general form elements -->
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">ADMINISTRACIÓN DE CLIENTES</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <!-- form start -->
+                    <form id="frmRegistraCliente">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="txtIdPersona">Id Persona</label>
+                                        <input type="text" class="form-control" id="txtIdPersona" placeholder="Id Persona">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="txtIdCliente">Id Cliente</label>
+                                        <input type="text" class="form-control" id="txtIdCliente" placeholder="Id Cliente">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="txtDocumento">DOCUMENTO</label>
+                                        <input type="text" class="form-control" id="txtDocumento" placeholder="Documento del cliente">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="txtNombre">NOMBRE</label>
+                                        <input type="text" class="form-control" id="txtNombre" placeholder="Nombre del cliente">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="txtApellido">APELLIDO</label>
+                                        <input type="text" class="form-control" id="txtApellido" placeholder="Primer apellido del cliente">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="txtTelefono">TELEFONO</label>
+                                        <input type="text" class="form-control" id="txtTelefono" placeholder="Segundo apellido del cliente">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="txtDireccion">DIRECCIÓN</label>
+                                        <input type="text" class="form-control" id="txtDireccion" placeholder="Dirección">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="txtEmail">EMAIL</label>
+                                        <input type="text" class="form-control" id="txtEmail" placeholder="Correo electrónico">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="txtNivel">NIVEL</label>
+                                        <input type="text" class="form-control" id="txtNivel" placeholder="Correo electrónico">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <button id="btnInsertar" class="btn-block btn-lg btn-primary">INSERTAR</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <button id="btnActualizar" class="btn-block btn-lg btn-primary">ACTUALIZAR</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <button id="btnEliminar" class="btn-block btn-lg btn-primary">ELIMINAR</button>
+                                    </div>
+                                </div>   
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="tblClientes" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>ID CLIENTE</th>
+                                                <th>NIVEL</th>
+                                                <th>DOCUMENTO</th>
+                                                <th>NOMBRE</th>
+                                                <th>APELLIDO</th>
+                                                <th>TELEFONO</th>
+                                                <th>CORREO</th>
+                                                <th>DIRECCION</th>
+                                                <th>FECHA DE REGISTRO</th>
+                                                <th>CORREO</th>
+                                                <th>DIRECCION</th>
+                                                <th>FECHA DE REGISTRO</th>
+                                                <th>DIRECCION</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer">
+                            <div id="dvMensaje" class=""></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section> 
+<script src="https://cdn.datatables.net/v/bs4-4.6.0/jq-3.7.0/dt-2.0.8/datatables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="./clientes.js"></script>
+</body>
+</html> 
+
+
+
+
+  
+    
